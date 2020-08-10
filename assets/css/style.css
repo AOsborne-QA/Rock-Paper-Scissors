@@ -1,0 +1,33 @@
+/* Font Imports */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Source+Serif+Pro&display=swap');
+
+/* General Styling */
+
+.content {
+    height: 85vh;
+}
+
+/* Font Styling */
+
+h1 {
+    font-family: 'Source Serif Pro', serif;
+}
+
+p {
+    font-family: 'Roboto Slab', serif;
+}
+
+/* Game Choice Section */
+
+.game-choice-area {
+  
+}
+
+.game-choice {
+
+}
+
+.choice-image {
+    width: 100%;
+}
