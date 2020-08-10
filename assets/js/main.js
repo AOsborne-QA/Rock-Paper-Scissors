@@ -1,9 +1,11 @@
-$("document").ready(function() {
+$("document").ready(function () {
 
     // Below object holds global variables to reduce amount in global space.
 
     let game = {
-        time : 10
+        time: 10,
+        timerStop: false,
+        gameTimer: null
     }
 
     /**
@@ -14,25 +16,37 @@ $("document").ready(function() {
     $(".start").on("click", () => {
         $(".start").toggleClass("d-none");
         $(".game-choice-area").toggleClass("d-none");
-        choiceStart();
+        game.gameTimer = setInterval(choiceTimer, 1000);
     })
 
 
-    // Timer for choice selection.
+    // Stops timer, hides choice selection and displays failure message
 
-    function choiceStart() {
-        setInterval(choiceTimer, 1000);
+
+    function choiceStop() {
+        clearInterval(game.gameTimer);
+        $(".game-choice").toggleClass("d-none");
+        $(".choice-timeout").toggleClass("d-none");
     }
 
     // Decrements the choice timer and updates timer text.
 
     function choiceTimer() {
-        --game.time
+        --game.time;
 
-        if(game.time != 1) {
+        if (game.time != 1) {
             $(".timer").text(`${game.time} seconds`);
         } else {
             $(".timer").text(`${game.time} second`);
         }
+
+        if (game.time <= 5) {
+            $(".timer").css("color", "red");
+        }
+
+        if (game.time == 0) {
+            choiceStop();
+        }
     }
+
 })
