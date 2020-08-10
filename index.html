@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock, Paper, Scissors Game</title>
 
     <!-- Bootstrap -->
 
@@ -12,10 +12,44 @@
 </head>
 
 <body>
+    <main class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1>Rock, Paper Scissors</h1>
+                    <button class="start" type="button">Start Game</button>
+                </div>
+
+                <div class="col-12 game-choice text-center d-none">
+                    <p>Time Remaining <span class="timer">10 seconds</span></p>
+
+                    <div class="row">
+                        <div class="col-4">
+                            <a href=""><img class="choice-image" src="assets/images/rock.png" alt="paper choice"></a>
+                        </div>
+                        <div class="col-4">
+                            <a href=""><img class="choice-image" src="assets/images/paper.png" alt="paper choice"></a>
+                        </div>
+                        <div class="col-4">
+                            <a href=""><img class="choice-image" src="assets/images/scissors.png"
+                                    alt="paper choice"></a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-12 game-area d-none">
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
 
 
-
-    
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
