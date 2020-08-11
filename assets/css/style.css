@@ -4,32 +4,65 @@
 
 /* General Styling */
 
-.content {
+.content,
+.landing-page,
+.failure-area {
     height: 85vh;
 }
 
 /* Font Styling */
 
-h1 {
+h1,
+h2 {
     font-family: 'Source Serif Pro', serif;
 }
 
-p {
+p,
+.btn-text {
     font-family: 'Roboto Slab', serif;
+}
+
+.red-text {
+    color: red;
+}
+
+/* Button Styling */
+
+.start,
+.restart {
+    background-color: #3fd2ad;
+}
+
+.start:hover,
+.restart:hover {
+    background-color: #01b7b3;
+}
+
+/* Landing Page */
+
+.landing-page,
+.failure-area {
+    position: relative;
+}
+
+.center-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* Game Choice Section */
 
-.game-choice-area {
-  
-}
 
 .choice {
     cursor: pointer;
     padding: 2rem;
     margin: 1rem 0;
+    height: 250px;
 }
 
 .choice-image {
     width: 100%;
+    height: 250px;
 }
