@@ -36,6 +36,7 @@ $("document").ready(function () {
 
     function stopTimer() {
         clearInterval(game.timer.gameTimer);
+        resetTimerInfo();
     }
 
     /**
@@ -74,24 +75,28 @@ $("document").ready(function () {
         }
     }
 
-    /**
-     * Below resters the game time to 10, removes the css class from the timer,
-     * changes the HTML text to 10 seconds, hides the failure message and starts
-     * choice selection
-     */
+   // Below invokes the resterTimerInfo and hides failure area and restarts game
 
     function restartChoice() {
-        game.timer.time = 10;
-        $(".timer").removeClass("red-text");
-        $(".timer").text("10 seconds");
+        resetTimerInfo();
         $(".failure-area").toggleClass("d-none");
         startChoice();
     }
 
+    // Below resets timer variables, HTML text and removes class from timer text.
+
+    function resetTimerInfo() {
+        game.timer.time = 10;
+        $(".timer").removeClass("red-text");
+        $(".timer").text("10 seconds");
+    }
+
+    // Restarts game when users clicks on restart button
 
     $(".restart").on("click", () => {
         restartChoice();
     });
+
 
     /**
      * Below takes the ID from the user choice and stores it. Then it invokes
@@ -119,53 +124,46 @@ $("document").ready(function () {
     function computerChoice() {
         const decision = Math.floor(Math.random() * 3);
         const choices = ["rock", "paper", "scissors"];
-    
+
         return choices[decision];
-    
+
     }
 
     /**
      * The below determines the game result based on the user choice against
      * what was generated as computer choice then returns the result message.
-    */
+     */
 
     function gameDecision(uChoice, cChoice) {
         // Draw Condition
         if (uChoice === cChoice) {
-            game.resultMessage = "Dang, it's a draw";
-            return game.resultMessage;
-    
+            return game.resultMessage = "Dang, it's a draw";
+
         }
-    
+
         if (uChoice === "rock") {
             if (cChoice === "paper") {
-                game.resultMessage = `Sucks, you lost - computer chose ${cChoice}`;
-                return game.resultMessage;
+                return game.resultMessage = `Sucks, you lost - computer chose ${cChoice}`;
             } else {
-                game.resultMessage = `You won! Your ${uChoice} smashed the computers ${cChoice}`;
-                return game.resultMessage;
-    
+                return game.resultMessage = `You won! Your ${uChoice} smashed the computers ${cChoice}`;
+
             }
         }
-    
+
         if (uChoice === "paper") {
             if (cChoice === "scissors") {
-                game.resultMessage = `Sucks, you lost - computer chose ${cChoice}`;
-                return game.resultMessage;
+                return game.resultMessage = `Sucks, you lost - computer chose ${cChoice}`;
             } else {
-                game.resultMessage = `You won! Your ${uChoice} smashed the computers ${cChoice}`;
-                return game.resultMessage;
+                return game.resultMessage = `You won! Your ${uChoice} smashed the computers ${cChoice}`;
             }
         }
-    
-    
+
+
         if (uChoice === "scissors") {
             if (cChoice === "rock") {
-                game.resultMessage = `Sucks, you lost - computer chose ${cChoice}`;
-                return game.resultMessage;
+                return game.resultMessage = `Sucks, you lost - computer chose ${cChoice}`;
             } else {
-                game.resultMessage = `You won! Your ${uChoice} smashed the computers ${cChoice}`;
-                return game.resultMessage;
+                return game.resultMessage = `You won! Your ${uChoice} smashed the computers ${cChoice}`;
             }
         }
     }
@@ -175,7 +173,7 @@ $("document").ready(function () {
     function hideChoice() {
         $(".game-choice-area").toggleClass("d-none");
     }
-    
+
     /**
      * The below function shows the results to the user and takes in the
      * user and computer choice, invokes hideChoice(), displays the game-area
@@ -185,11 +183,11 @@ $("document").ready(function () {
 
     function showResult(uChoice, cChoice) {
         hideChoice();
+        let message = game.resultMessage;
         $(".game-area").toggleClass("d-none");
-        $(".result").text(game.resultMessage);
-        $(".user").attr("src", `assets/images/${uChoice}.png`).attr("alt", `Your choice image of ${uChoice}`);
-        $(".comp").attr("src", `assets/images/${cChoice}.png`).attr("alt", `Computer choice image of ${cChoice}`);
+        $(".result").append(`<h2>${message}</h2>`);
+        $(".user").append(`<img class="choice-image" src="assets/images/${uChoice}.png" alt="Your choice image of ${uChoice}">`);
+        $(".comp").append(`<img class="choice-image" src="assets/images/${cChoice}.png" alt="Computer choice image of ${cChoice}">`);
     }
-
 
 });
