@@ -79,7 +79,16 @@ $("document").ready(function () {
 
     function restartChoice() {
         resetTimerInfo();
-        $(".failure-area").toggleClass("d-none");
+
+        if (!$(".failure-area").hasClass("d-none")) {
+            $(".failure-area").toggleClass("d-none");
+        }
+
+        if (!$(".game-area").hasClass("d-none")) {
+            $(".game-area").toggleClass("d-none");
+            clearResults();
+        }
+
         startChoice();
     }
 
