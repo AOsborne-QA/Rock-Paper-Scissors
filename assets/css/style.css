@@ -18,6 +18,7 @@ h2 {
 }
 
 p,
+li,
 .btn-text {
     font-family: 'Roboto Slab', serif;
 }
@@ -29,12 +30,15 @@ p,
 /* Button Styling */
 
 .start,
-.restart {
+.restart,
+.close-help {
     background-color: #3fd2ad;
 }
 
 .start:hover,
-.restart:hover {
+.restart:hover,
+.help:hover,
+.close-help:hover {
     background-color: #01b7b3;
 }
 
@@ -73,18 +77,34 @@ p,
     height: 450px;
 }
 
+.result {
+    margin: 3rem 0;
+}
+
+/* Modal Styling */
+
+li {
+    padding: 0.5rem;
+}
+
 
 /* Media Queries */
 
 @media only screen and (max-width: 767px) and (orientation: portrait) {
+
     .choice,
     .choice-image {
         padding: 0;
         height: 150px;
     }
+
+    .result {
+        margin: 2rem 0;
+    }
 }
 
 @media only screen and (max-width: 820px) and (orientation: landscape) {
+
     .choice,
     .choice-image {
         padding: 0;

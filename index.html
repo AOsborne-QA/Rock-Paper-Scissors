@@ -28,9 +28,10 @@
                 <img src="assets/images/rps.png" alt="Home logo">
             </a>
 
-            <a class="navbar-brand" href="index.html">
+            
+            <button type="button" class="navbar-brand help btn" data-toggle="modal" data-target="#help-modal">
                 <i class="fas fa-question"></i>
-            </a>
+            </button>
         </nav>
     </header>
 
@@ -41,7 +42,7 @@
                 <!-- Landing Page Section -->
 
                 <div class="col-12 landing-page text-center mt-3">
-                    <div class="text-center">
+                    <div class="text-center result">
                         <h1>Rock, Paper, Scissors</h1>
                     </div>
 
@@ -113,8 +114,52 @@
 
                     </div>
 
+                    <button class="restart btn" type="button"><span class="btn-text">Play Again?</span></button>
+
                 </div>
             </div>
+
+   <!-- Help Modal -->
+<div class="modal fade" id="help-modal" tabindex="-1" role="dialog" aria-labelledby="helpModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="help-modal-title">How to Play</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <ul>
+            <li>
+                Click "Start Game" to start the game.
+            </li>
+            <li>
+                On the next section, choose your move - Rock, Paper, or Scissors
+                <br>
+                <small>Note that you only have 10 seconds to make your choice or you fail!</small>
+            </li>
+            <li>
+                If you don't choose your move within 10 seconds, you fail! 
+                <br>
+                If you do fail, then just click on the "Restart Game" button to go back to the choice screen.
+            </li>
+            <li>
+                After you choose your move, the computer will make theirs and you will be shown the result Page.
+            </li>
+            <li>
+                Have fun and good luck!
+            </li>
+        </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn close-help" data-dismiss="modal"><span class="btn-text">Close</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
         </div>
     </main>
 
@@ -126,6 +171,10 @@
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
+    <!-- Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Custom JS     -->
     <script src="assets/js/main.js"></script>
 </body>
 
