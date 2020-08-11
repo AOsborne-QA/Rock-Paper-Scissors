@@ -21,10 +21,15 @@ $("document").ready(function () {
      */
 
     $(".start").on("click", () => {
-        $(".start").toggleClass("d-none");
+        $(".landing-page").toggleClass("d-none");
+        startChoice();
+    });
+
+
+    function startChoice() {
         $(".game-choice-area").toggleClass("d-none");
         game.timer.gameTimer = setInterval(choiceTimer, 1000);
-    });
+    }
 
 
     // Stops timer, hides choice selection and displays failure message
@@ -40,11 +45,11 @@ $("document").ready(function () {
 
     function choiceStop() {
         stopTimer();
-        $(".game-choice").toggleClass("d-none");
-        $(".choice-timeout").toggleClass("d-none");
+        $(".game-choice-area").toggleClass("d-none");
+        $(".failure-area").toggleClass("d-none");
     }
 
-    
+
     /**
      * The below decrements the choice timer to show it counting
      * down and updates the HTML text. At 5 seconds, it changes 
@@ -61,13 +66,32 @@ $("document").ready(function () {
         }
 
         if (game.timer.time <= 5) {
-            $(".timer").css("color", "red");
+            $(".timer").addClass("red-text");
         }
 
         if (game.timer.time == 0) {
             choiceStop();
         }
     }
+
+    /**
+     * Below resters the game time to 10, removes the css class from the timer,
+     * changes the HTML text to 10 seconds, hides the failure message and starts
+     * choice selection
+     */
+
+    function restartChoice() {
+        game.timer.time = 10;
+        $(".timer").removeClass("red-text");
+        $(".timer").text("10 seconds");
+        $(".failure-area").toggleClass("d-none");
+        startChoice();
+    }
+
+
+    $(".restart").on("click", () => {
+        restartChoice();
+    });
 
     /**
      * Below takes the ID from the user choice and stores it. Then it invokes
