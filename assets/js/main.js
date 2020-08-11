@@ -186,8 +186,8 @@ $("document").ready(function () {
         let message = game.resultMessage;
         $(".game-area").toggleClass("d-none");
         $(".result").append(`<h2>${message}</h2>`);
-        $(".user").append(`<img class="choice-image" src="assets/images/${uChoice}.png" alt="Your choice image of ${uChoice}">`);
-        $(".comp").append(`<img class="choice-image" src="assets/images/${cChoice}.png" alt="Computer choice image of ${cChoice}">`);
+        $(".user").append(`<img class="choice-image result-image" src="assets/images/${uChoice}.png" alt="Your choice image of ${uChoice}">`);
+        $(".comp").append(`<img class="choice-image result-image" src="assets/images/${cChoice}.png" alt="Computer choice image of ${cChoice}">`);
     }
 
     // Removes the images and h2 from results area
