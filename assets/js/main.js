@@ -146,33 +146,40 @@ $("document").ready(function () {
     function gameDecision(uChoice, cChoice) {
         // Draw Condition
         if (uChoice === cChoice) {
-            return game.resultMessage = "Dang, it's a draw";
+            game.resultMessage = "Dang, it's a draw";
+            return game.resultMessage;
 
         }
 
         if (uChoice === "rock") {
             if (cChoice === "paper") {
-                return game.resultMessage = `Sucks, you lost - computer chose ${cChoice}`;
+                game.resultMessage = `You lost! You chose ${uChoice} and computer chose ${cChoice}`;
+                return game.resultMessage;
             } else {
-                return game.resultMessage = `You won! Your ${uChoice} smashed the computers ${cChoice}`;
+                game.resultMessage = `You won! Your ${uChoice} smashed the computers ${cChoice}`;
+                return game.resultMessage;
 
             }
         }
 
         if (uChoice === "paper") {
             if (cChoice === "scissors") {
-                return game.resultMessage = `Sucks, you lost - computer chose ${cChoice}`;
+                game.resultMessage = `You lost! You chose ${uChoice} and computer chose ${cChoice}`;
+                return game.resultMessage;
             } else {
-                return game.resultMessage = `You won! Your ${uChoice} smashed the computers ${cChoice}`;
+                game.resultMessage = `You won! Your ${uChoice} covered the computers ${cChoice}`;
+                return game.resultMessage;
             }
         }
 
 
         if (uChoice === "scissors") {
             if (cChoice === "rock") {
-                return game.resultMessage = `Sucks, you lost - computer chose ${cChoice}`;
+                game.resultMessage = `You lost! You chose ${uChoice} and computer chose ${cChoice}`;
+                return game.resultMessage;
             } else {
-                return game.resultMessage = `You won! Your ${uChoice} smashed the computers ${cChoice}`;
+                game.resultMessage = `You won! Your ${uChoice} cut the computers ${cChoice}`;
+                return game.resultMessage;
             }
         }
     }
