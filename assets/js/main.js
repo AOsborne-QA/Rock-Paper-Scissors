@@ -13,7 +13,7 @@ $("document").ready(function () {
             compChoice: ""
         },
         resultMessage: "",
-    }
+    };
 
     /**
      * When user clicks on start btn it hides the main section, 
@@ -24,13 +24,13 @@ $("document").ready(function () {
         $(".start").toggleClass("d-none");
         $(".game-choice-area").toggleClass("d-none");
         game.timer.gameTimer = setInterval(choiceTimer, 1000);
-    })
+    });
 
 
     // Stops timer, hides choice selection and displays failure message
 
     function stopTimer() {
-        clearInterval(game.timer.gameTimer)
+        clearInterval(game.timer.gameTimer);
     }
 
     /**
@@ -83,7 +83,7 @@ $("document").ready(function () {
         stopTimer();
         gameDecision(game.selection.userChoice, game.selection.compChoice);
         showResult(game.selection.userChoice, game.selection.compChoice);
-    })
+    });
 
 
     /**
@@ -94,9 +94,9 @@ $("document").ready(function () {
 
     function computerChoice() {
         const decision = Math.floor(Math.random() * 3);
-        const choices = ["rock", "paper", "scissors"]
+        const choices = ["rock", "paper", "scissors"];
     
-        return choices[decision]
+        return choices[decision];
     
     }
 
@@ -108,45 +108,64 @@ $("document").ready(function () {
     function gameDecision(uChoice, cChoice) {
         // Draw Condition
         if (uChoice === cChoice) {
-            game.resultMessage = "Dang, it's a draw"
-            return game.resultMessage
+            game.resultMessage = "Dang, it's a draw";
+            return game.resultMessage;
     
         }
     
         if (uChoice === "rock") {
             if (cChoice === "paper") {
-                game.resultMessage = `Sucks, you lost - computer chose ${cChoice}`
-                return game.resultMessage
+                game.resultMessage = `Sucks, you lost - computer chose ${cChoice}`;
+                return game.resultMessage;
             } else {
-                game.resultMessage = `You won! Your ${uChoice} smashed the computers ${cChoice}`
-                return game.resultMessage
+                game.resultMessage = `You won! Your ${uChoice} smashed the computers ${cChoice}`;
+                return game.resultMessage;
     
             }
         }
     
         if (uChoice === "paper") {
             if (cChoice === "scissors") {
-                game.resultMessage = `Sucks, you lost - computer chose ${cChoice}`
-                return game.resultMessage
+                game.resultMessage = `Sucks, you lost - computer chose ${cChoice}`;
+                return game.resultMessage;
             } else {
-                game.resultMessage = `You won! Your ${uChoice} smashed the computers ${cChoice}`
-                return game.resultMessage
+                game.resultMessage = `You won! Your ${uChoice} smashed the computers ${cChoice}`;
+                return game.resultMessage;
             }
         }
     
     
         if (uChoice === "scissors") {
             if (cChoice === "rock") {
-                game.resultMessage = `Sucks, you lost - computer chose ${cChoice}`
-                return game.resultMessage
+                game.resultMessage = `Sucks, you lost - computer chose ${cChoice}`;
+                return game.resultMessage;
             } else {
-                game.resultMessage = `You won! Your ${uChoice} smashed the computers ${cChoice}`
-                return game.resultMessage
+                game.resultMessage = `You won! Your ${uChoice} smashed the computers ${cChoice}`;
+                return game.resultMessage;
             }
         }
     }
 
+    // This hides the game-choice-area within the HTML page
+
+    function hideChoice() {
+        $(".game-choice-area").toggleClass("d-none");
+    }
+    
+    /**
+     * The below function shows the results to the user and takes in the
+     * user and computer choice, invokes hideChoice(), displays the game-area
+     * in the HTML document. Changes the text to display the resultMessage,
+     * and uses both choices to populate the html img and alt tag.
+     */
+
+    function showResult(uChoice, cChoice) {
+        hideChoice();
+        $(".game-area").toggleClass("d-none");
+        $(".result").text(game.resultMessage);
+        $(".user").attr("src", `assets/images/${uChoice}.png`).attr("alt", `Your choice image of ${uChoice}`);
+        $(".comp").attr("src", `assets/images/${cChoice}.png`).attr("alt", `Computer choice image of ${cChoice}`);
+    }
 
 
-
-})
+});
