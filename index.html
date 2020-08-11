@@ -10,45 +10,106 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+        type="text/css">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 
 <body>
+
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand home" href="index.html">
+                <img src="assets/images/rps.png" alt="Home logo">
+            </a>
+
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-question"></i>
+            </a>
+        </nav>
+    </header>
+
     <main class="content">
         <div class="container-fluid">
             <div class="row no-gutters">
-                <div class="col-12 text-center mt-3">
-                    <h1>Rock, Paper Scissors</h1>
-                    <button class="start" type="button">Start Game</button>
-                </div>
 
-                <div class="col-12 game-choice-area text-center d-none">
-                    <p>Time Remaining <span class="timer">10 seconds</span></p>
+                <!-- Landing Page Section -->
 
-                    <div class="row no-gutters game-choice">
-                        <div class="col-12 col-lg-4">
-                            <div class="choice">
-                                <img class="choice-image" src="assets/images/rock.png" alt="paper choice">
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4">
-                            <div class="choice">
-                                <img class="choice-image" src="assets/images/paper.png" alt="paper choice">
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4">
-                            <div class="choice">
-                                <img class="choice-image" src="assets/images/scissors.png" alt="paper choice">
-                            </div>
-                        </div>
+                <div class="col-12 landing-page text-center mt-3">
+                    <div class="text-center">
+                        <h1>Rock, Paper, Scissors</h1>
+                    </div>
+
+                    <div class="center-button">
+                        <button class="start btn" type="button"><span class="btn-text">Start Game</span></button>
                     </div>
 
                 </div>
 
-                <div class="col-12 game-area d-none">
+                <!-- Game Choice Section -->
 
+                <div class="col-12 game-choice-area text-center mt-3 d-none">
+                    <div class="choice-timer-area">
+                        <h2>Make your choice before the timer runs out</h2>
+                        <p>Time Remaining <span class="timer">10 seconds</span></p>
+                    </div>
+
+                    <div class="row no-gutters game-choice">
+                        <div class="col-12 col-lg-4">
+                            <div class="choice" id="rock">
+                                <img class="choice-image" src="assets/images/rock.png" title="Rock" alt="rock choice">
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4">
+                            <div class="choice" id="paper">
+                                <img class="choice-image" src="assets/images/paper.png" title="Paper"
+                                    alt="paper choice">
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4">
+                            <div class="choice" id="scissors">
+                                <img class="choice-image btn" src="assets/images/scissors.png" title="Scissors"
+                                    alt="scissors choice">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Failure Message Section -->
+
+                <div class="col-12 failure-area text-center mt-3 d-none">
+                    <div class="text-center">
+                        <h2>Sorry, you lost!</h2>
+
+                        <p>You didn't make a choice within 10 seconds. How about trying again?</p>
+                    </div>
+
+                    <div class="center-button">
+                        <button class="restart btn" type="button"><span class="btn-text">Restart Game</span></button>
+                    </div>
+
+                </div>
+
+                <!-- Game Result Section -->
+
+                <div class="col-12 game-area text-center d-none">
+                    <h1>The results are in...</h1>
+
+                    <div class="result">
+
+                    </div>
+
+                    <div class="row no-gutters">
+                        <div class="col-6 user">
+                        </div>
+                        <div class="col-6 comp">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
