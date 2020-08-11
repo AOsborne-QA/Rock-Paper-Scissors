@@ -177,8 +177,8 @@ $("document").ready(function () {
     /**
      * The below function shows the results to the user and takes in the
      * user and computer choice, invokes hideChoice(), displays the game-area
-     * in the HTML document. Changes the text to display the resultMessage,
-     * and uses both choices to populate the html img and alt tag.
+     * in the HTML document. Appends the user and computer choice images to HTML and 
+     * game message
      */
 
     function showResult(uChoice, cChoice) {
@@ -189,5 +189,44 @@ $("document").ready(function () {
         $(".user").append(`<img class="choice-image" src="assets/images/${uChoice}.png" alt="Your choice image of ${uChoice}">`);
         $(".comp").append(`<img class="choice-image" src="assets/images/${cChoice}.png" alt="Computer choice image of ${cChoice}">`);
     }
+
+    // Removes the images and h2 from results area
+
+    function clearResults() {
+        $(".user img").remove();
+        $(".comp img").remove();
+        $(".result h2").remove();
+    }
+
+    /**
+     * Prevents the default action of anchor tag. Invokes clear results function
+     * Checks to see if any screen does not have the d-none class, if it doesn't
+     * it toggles and applies it then shows landing page. 
+     * If user is on game choice area, then it resets time and corresponding elements.
+     * If game area, it clears the results.
+     */
+    
+    $(".home").on("click", (event) => {
+        event.preventDefault();
+    
+        if (!$(".game-choice-area").hasClass("d-none")) {
+            hideChoice();
+            stopTimer();
+            resetTimerInfo();
+        }
+    
+        if (!$(".failure-area").hasClass("d-none")) {
+            $(".failure-area").toggleClass("d-none");
+        }
+    
+        if (!$(".game-area").hasClass("d-none")) {
+            $(".game-area").toggleClass("d-none");
+            clearResults();
+        }
+    
+        if ($(".landing-page").hasClass("d-none")) {
+            $(".landing-page").toggleClass("d-none");
+        }
+    });
 
 });
