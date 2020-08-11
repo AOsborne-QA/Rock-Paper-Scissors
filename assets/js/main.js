@@ -33,13 +33,23 @@ $("document").ready(function () {
         clearInterval(game.timer.gameTimer)
     }
 
+    /**
+     * Below invokes stopTimer(), hides the choice area,
+     * displays the failure message to user.
+     */
+
     function choiceStop() {
         stopTimer();
         $(".game-choice").toggleClass("d-none");
         $(".choice-timeout").toggleClass("d-none");
     }
 
-    // Decrements the choice timer and updates timer text.
+    
+    /**
+     * The below decrements the choice timer to show it counting
+     * down and updates the HTML text. At 5 seconds, it changes 
+     * text to red to stand out to user. At 0, it invokes ChoiceStop().
+     */
 
     function choiceTimer() {
         --game.timer.time;
@@ -58,5 +68,85 @@ $("document").ready(function () {
             choiceStop();
         }
     }
+
+    /**
+     * Below takes the ID from the user choice and stores it. Then it invokes
+     * computerChoice() to get the computers choice. It stops the timer, then 
+     * invokes gameDecision() to determine result, and finally invokes 
+     * showResult() to display results to user.
+     */
+
+
+    $(".choice").on("click", (event) => {
+        game.selection.userChoice = $(event.currentTarget).attr('id');
+        game.selection.compChoice = computerChoice();
+        stopTimer();
+        gameDecision(game.selection.userChoice, game.selection.compChoice);
+        showResult(game.selection.userChoice, game.selection.compChoice);
+    })
+
+
+    /**
+     * Below chooses a random option for the computer based on the number
+     * generated. This is then used to pick an option from the array and 
+     * returned.
+     */
+
+    function computerChoice() {
+        const decision = Math.floor(Math.random() * 3);
+        const choices = ["rock", "paper", "scissors"]
+    
+        return choices[decision]
+    
+    }
+
+    /**
+     * The below determines the game result based on the user choice against
+     * what was generated as computer choice then returns the result message.
+    */
+
+    function gameDecision(uChoice, cChoice) {
+        // Draw Condition
+        if (uChoice === cChoice) {
+            game.resultMessage = "Dang, it's a draw"
+            return game.resultMessage
+    
+        }
+    
+        if (uChoice === "rock") {
+            if (cChoice === "paper") {
+                game.resultMessage = `Sucks, you lost - computer chose ${cChoice}`
+                return game.resultMessage
+            } else {
+                game.resultMessage = `You won! Your ${uChoice} smashed the computers ${cChoice}`
+                return game.resultMessage
+    
+            }
+        }
+    
+        if (uChoice === "paper") {
+            if (cChoice === "scissors") {
+                game.resultMessage = `Sucks, you lost - computer chose ${cChoice}`
+                return game.resultMessage
+            } else {
+                game.resultMessage = `You won! Your ${uChoice} smashed the computers ${cChoice}`
+                return game.resultMessage
+            }
+        }
+    
+    
+        if (uChoice === "scissors") {
+            if (cChoice === "rock") {
+                game.resultMessage = `Sucks, you lost - computer chose ${cChoice}`
+                return game.resultMessage
+            } else {
+                game.resultMessage = `You won! Your ${uChoice} smashed the computers ${cChoice}`
+                return game.resultMessage
+            }
+        }
+    }
+
+
+
 
 })
